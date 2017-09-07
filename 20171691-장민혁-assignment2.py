@@ -4,9 +4,7 @@ factorial = 1
  
 while 1:
     num = int(input("Enter a number "))
-    if num == 0:
-        print("1! = 1")
-    elif num == -1:
+    if num == -1:
         break
     else:
         for i in range(1,num+1):
