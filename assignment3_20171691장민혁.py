@@ -51,7 +51,7 @@ def doScoreDB(scdb):
 		elif parse[0] == 'inc':
 			for n in scdb:
 				if n['Name'] == parse[1]:
-					n['Score'] +=1
+					n['Score'] += int(parse[2])
 		elif parse[0] == 'del':
 			for p in scdb:
 				if p['Name'] == parse[1]:
