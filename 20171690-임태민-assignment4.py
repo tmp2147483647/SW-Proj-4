@@ -1,5 +1,3 @@
-import operator as op
-
 def comb(n,r):
     if r == 0:
         return 1
