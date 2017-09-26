@@ -10,7 +10,7 @@ def factorial(num):
 def input_numbers():
     n = int(input("type n of nCr: "))
     r = int(input("type r of nCr: "))
-    if n<r or n <= 0 or r < 0:
+    if n<r or n < 0 or r < 0: // n==0일 때 수정
         print("wrong number!!")
         n,r = input_numbers()
     return n,r
