@@ -3,7 +3,7 @@ import sys
 from PyQt5.QtWidgets import (QWidget, QPushButton,QComboBox,
     QHBoxLayout, QVBoxLayout, QApplication, QLabel, QComboBox, QTextEdit, QLineEdit)
 from PyQt5.QtCore import Qt
-
+##
 
 class ScoreDB(QWidget):
     
@@ -14,6 +14,8 @@ class ScoreDB(QWidget):
         self.dbfilename = 'test3_4.dat'
         self.scoredb = []
         self.readScoreDB()
+
+        self.check = 0
         self.showScoreDB()
 
 
@@ -127,13 +129,8 @@ class ScoreDB(QWidget):
         self.showScoreDB()
 
     def Showbtn_Clicked(self):
-        keyname = self.combo.currentText()
-        result = ""
-        for p in sorted(self.scoredb, key =lambda person: person[keyname]):
-            for attr in sorted(p):
-                result += attr + ":" + str(p[attr]) + "\t"
-            result += "\n"
-        self.TextEdit.setText(result)
+        self.showScoreDB()
+
 
     def Findbtn_Clicked(self):
         result = ""
@@ -186,11 +183,12 @@ class ScoreDB(QWidget):
         fH.close()
 
     def showScoreDB(self):
+        keyname = self.combo.currentText()
         result = ""
-        for p in self.scoredb:
+        for p in sorted(self.scoredb, key =lambda person: person[keyname]):
             for attr in sorted(p):
-                result += attr+":"+ str(p[attr]) + "\t"
-            result +="\n"
+                result += attr + ":" + str(p[attr]) + "\t"
+            result += "\n"
         self.TextEdit.setText(result)
 
 
