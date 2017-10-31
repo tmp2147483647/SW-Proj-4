@@ -32,13 +32,13 @@ class ScoreDB(QWidget):
         amountedit = QLineEdit()
         
         klabel = QLabel('Key:')
-        keycombo = QComboBox()
-        keycombo.addItem('Name')
-        keycombo.addItem('Age')
-        keycombo.addItem('Score')
+        self.keycombo = QComboBox()
+        self.keycombo.addItem('Name')
+        self.keycombo.addItem('Age')
+        self.keycombo.addItem('Score')
 
         rslabel = QLabel('result :')
-        rstextedit = QTextEdit()
+        self.rstextedit = QTextEdit()
 
         addbtn = QPushButton('Add')
         delbtn = QPushButton('Del')
@@ -59,7 +59,7 @@ class ScoreDB(QWidget):
         grid.addWidget(alabel, 2, 2)
         grid.addWidget(amountedit, 2, 3)
         grid.addWidget(klabel, 2, 4)
-        grid.addWidget(keycombo, 2, 5)
+        grid.addWidget(self.keycombo, 2, 5)
 
         grid.addWidget(addbtn, 3, 1)
         grid.addWidget(delbtn, 3, 2)
@@ -68,7 +68,7 @@ class ScoreDB(QWidget):
         grid.addWidget(showbtn, 3, 5)
 
         grid.addWidget(rslabel, 5, 0)
-        grid.addWidget(rstextedit, 6, 0, 5, 6)
+        grid.addWidget(self.rstextedit, 6, 0, 5, 6)
         
         self.setLayout(grid)
         
@@ -104,7 +104,13 @@ class ScoreDB(QWidget):
         fH.close()
 
     def showScoreDB(self):
-        pass
+        self.key = self.keycombo.currentText()
+        rtstring = ""
+        for i in sorted(self.scoredb, key=lambda person: person[self.key]):
+            for j in sorted(i):
+                rtstring += j + ":" + str(i[j]) + "\t"
+            rtstring += "\n"
+        self.rstextedit.setText(rtstring)
         
 if __name__ == '__main__':
     
