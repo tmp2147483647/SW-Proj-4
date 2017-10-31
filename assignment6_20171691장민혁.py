@@ -14,7 +14,7 @@ class ScoreDB(QWidget):
         self.dbfilename = 'assignment6.dat'
         self.scoredb = []
         self.readScoreDB()
-        self.change_int()
+        #self.change_int()
         self.doScoreDB()
         self.showScoreDB()
         
@@ -169,15 +169,16 @@ class ScoreDB(QWidget):
                 p['Score'] += int(amount)
         self.showScoreDB()
 
-
+# 처음 실행시 나오도록 수정
     def showScoreDB(self):
-        self.key = self.combo.currentText()
+        key = self.combo.currentText( )  # self.key --> key 수정
         ret_string = ""
-        for p in sorted(self.scoredb, key=lambda person: person[self.key]):
+        for p in sorted(self.scoredb, key=lambda person: person[key]):
             for attr in sorted(p):
                 ret_string += attr + ":" + str(p[attr]) + "\t"
             ret_string += "\n"
         self.textEdit_result.setText(ret_string)
+
 
 
     # write the data into person db
