@@ -32,9 +32,22 @@ class ScoreDB(QWidget):
         amountedit = QLineEdit()
         
         klabel = QLabel('Key:')
+        keycombo = QComboBox()
+        keycombo.addItem('Name')
+        keycombo.addItem('Age')
+        keycombo.addItem('Score')
+
+        rslabel = QLabel('result :')
+        rstextedit = QTextEdit()
+
+        addbtn = QPushButton('Add')
+        delbtn = QPushButton('Del')
+        findbtn = QPushButton('Find')
+        incbtn = QPushButton('Inc')
+        showbtn = QPushButton('Show')
 
         grid = QGridLayout()
-        grid.setSpacing(10)
+        grid.setSpacing(5)
 
         grid.addWidget(nlabel, 1, 0)
         grid.addWidget(nameedit, 1, 1)
@@ -46,7 +59,17 @@ class ScoreDB(QWidget):
         grid.addWidget(alabel, 2, 2)
         grid.addWidget(amountedit, 2, 3)
         grid.addWidget(klabel, 2, 4)
+        grid.addWidget(keycombo, 2, 5)
 
+        grid.addWidget(addbtn, 3, 1)
+        grid.addWidget(delbtn, 3, 2)
+        grid.addWidget(findbtn, 3, 3)
+        grid.addWidget(incbtn, 3, 4)
+        grid.addWidget(showbtn, 3, 5)
+
+        grid.addWidget(rslabel, 5, 0)
+        grid.addWidget(rstextedit, 6, 0, 5, 6)
+        
         self.setLayout(grid)
         
         self.setGeometry(300, 300, 500, 250)
@@ -88,8 +111,3 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = ScoreDB()
     sys.exit(app.exec_())
-
-
-
-
-
