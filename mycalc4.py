@@ -76,7 +76,6 @@ class Calculator(QWidget):
                 calumn = 1
             else:
                 calumn = 2
-            print(row, calumn)
 
             numLayout.addWidget(self.digitButton[i], row, calumn)
             count +=1
