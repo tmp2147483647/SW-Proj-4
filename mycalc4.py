@@ -62,24 +62,15 @@ class Calculator(QWidget):
 #고치기 3의배수
 
         numLayout.addWidget(self.digitButton[0], 3, 0)
-        count = 0
+        calumn = 0
         row = 2
         while row >=0:
             for i in range(1, len(self.digitButton)):
-                if count == 3:
+                if calumn == 3:
                     row -= 1
-                    count = 0
-
-                calumn_check = i % 3
-                if calumn_check == 1:
                     calumn = 0
-                elif calumn_check == 2:
-                    calumn = 1
-                else:
-                    calumn = 2
-
                 numLayout.addWidget(self.digitButton[i], row, calumn)
-                count +=1
+                calumn +=1
 
         numLayout.addWidget(self.decButton, 3, 1)
         numLayout.addWidget(self.eqButton, 3, 2)
