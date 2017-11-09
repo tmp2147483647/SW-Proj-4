@@ -38,7 +38,6 @@ class Calculator(QWidget):
 
 
         # . and = Buttons
-        button = ['.', '=', '*', '/', '+', '-', '(', ')']
         self.decButton = Button('.',self.buttonClicked)
         self.eqButton = Button('=',self.buttonClicked)
 
