@@ -91,9 +91,6 @@ class Calculator(QWidget):
             self.display.clear()
         elif key in consdic.keys():
             self.display.setText(self.display.text() + consdic[key])            
-        elif key in consdic:
-            for value in consdic.values():
-                self.display.setText(self.display.text() + value)
         elif key == functionList[0]:
             n = self.display.text()
             value = calcFunctions.factorial(n)
