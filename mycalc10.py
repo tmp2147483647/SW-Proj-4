@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QLineEdit, QToolButton
 from PyQt5.QtWidgets import QSizePolicy
 from PyQt5.QtWidgets import QLayout, QGridLayout
 
-from keypad2 import numPadList, operatorList, constantDic, functionDic
+import keypad2
 import calcFunctions
 
 class Button(QToolButton):
@@ -40,10 +40,10 @@ class Calculator(QWidget):
         funcLayout = QGridLayout()
 
         buttonGroups = {
-            'num': {'buttons': numPadList, 'layout': numLayout, 'columns': 3},
-            'op': {'buttons': operatorList, 'layout': opLayout, 'columns': 2},
-            'constants': {'buttons': constantDic.keys(), 'layout': constLayout, 'columns': 1},
-            'functions': {'buttons': functionDic.keys(), 'layout': funcLayout, 'columns': 1},
+            'num': {'buttons': keypad2.numPadList, 'layout': numLayout, 'columns': 3},
+            'op': {'buttons': keypad2.operatorList, 'layout': opLayout, 'columns': 2},
+            'constants': {'buttons': keypad2.constantDic.keys( ), 'layout': constLayout, 'columns': 1},
+            'functions': {'buttons': keypad2.functionDic.keys( ), 'layout': funcLayout, 'columns': 1},
         }
 
         for label in buttonGroups.keys():
@@ -88,11 +88,11 @@ class Calculator(QWidget):
         elif key == 'C':
             self.display.clear()
 
-        elif key in constantDic:
-            self.display.setText(self.display.text() + constantDic[key])
-
-        elif key in functionDic:
-            value = functionDic[key](self.display.text())
+        elif key in keypad2.constantDic:
+            self.display.setText(self.display.text() + keypad2.constantDic[key])
+##factorial 예외처리 ex) 3+3! --> (3+3)!
+        elif key in keypad2.functionDic:
+            value = keypad2.functionDic[key](str(eval(self.display.text())))
             self.display.setText(str(value))
         else:
             self.display.setText(self.display.text() + key)

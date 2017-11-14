@@ -1,9 +1,11 @@
 from math import factorial as fact
 
+
 def factorial(numStr):
     try:
         n = int(numStr)
         r = str(fact(n))
+
     except:
         r = 'Error!'
     return r
