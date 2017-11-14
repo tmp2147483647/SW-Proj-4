@@ -92,7 +92,6 @@ class Calculator(QWidget):
                 if key == constantList[i]:
                     self.display.setText(constanvalue[i])
 
-
         elif key in functionList:
             n = self.display.text()
             if len(n) > 1:
@@ -100,11 +99,8 @@ class Calculator(QWidget):
             value=calcFunctions.function_Dic[key](n)
             self.display.setText(str(value))
 
-
-
         else:
             self.display.setText(self.display.text() + key)
-
 
 if __name__ == '__main__':
 
