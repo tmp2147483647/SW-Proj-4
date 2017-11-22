@@ -50,15 +50,19 @@ def romanToDec(Str):
         tmp = 0
         for value in sorted(romans.keys(), reverse=True):
             check = len(romans[value])
-
-            while(check == 1 and Str[0:1] == romans[value]):
+            while (Str[0:check] == romans[value]):
                 Str = Str.replace(romans[value], "", 1)
                 tmp += value
 
-            while (check == 2 and Str[0:2] == romans[value]):
+            """
+            while(check == 1 and Str[0:check] == romans[value]):
                 Str = Str.replace(romans[value], "", 1)
                 tmp += value
 
+            while (check == 2 and Str[0:check] == romans[value]):
+                Str = Str.replace(romans[value], "", 1)
+                tmp += value
+            """
 
     except:
         tmp = "Error!"
